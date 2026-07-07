@@ -11,13 +11,19 @@ let listingSchema = new Schema({
     type: String,
   },
   image: {
-    type: String,
-    default:
-      "https://www.shutterstock.com/image-photo/summer-sea-palm-tree-sunset-600nw-2662669477.jpg",
-    set: (v) =>
-      v === ""
-        ? "https://www.shutterstock.com/image-photo/summer-sea-palm-tree-sunset-600nw-2662669477.jpg"
-        : v,
+    filename: {
+      type: String,
+      default: "listingimage",
+    },
+    url: {
+      type: String,
+      default:
+        "https://www.shutterstock.com/image-photo/summer-sea-palm-tree-sunset-600nw-2662669477.jpg",
+      set: (v) =>
+        v === ""
+          ? "https://www.shutterstock.com/image-photo/summer-sea-palm-tree-sunset-600nw-2662669477.jpg"
+          : v,
+    },
   },
   price: {
     type: Number,
