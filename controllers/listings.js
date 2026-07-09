@@ -29,15 +29,45 @@ module.exports.createListing = async (req, res, next) => {
   if (!req.body.listing) {
     throw new ExpressError(400, "send valid data for listing");
   }
+
+  // Get coordinates from Nominatim
+  const address = `${req.body.listing.location}, ${req.body.listing.country}`;
+
+  const response = await fetch(
+    `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+      address,
+    )}&format=json&limit=1`,
+    {
+      headers: {
+        "User-Agent": "wanderlust-app",
+      },
+    },
+  );
+
+  const data = await response.json();
+
+  const lat = Number(data[0].lat);
+  const lng = Number(data[0].lon);
+
+  // Create new listing
   let url = req.file.path;
   let filename = req.file.filename;
+
   const newListing = new Listing(req.body.listing);
+
   newListing.owner = req.user._id;
+
   newListing.image = {
     url,
     filename,
   };
+
+  // Save coordinates
+  newListing.latitude = lat;
+  newListing.longitude = lng;
+
   await newListing.save();
+
   req.flash("success", "New Listing Created");
   res.redirect("/listings");
 };
