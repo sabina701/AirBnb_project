@@ -1,8 +1,17 @@
 const Listing = require("../models/listings");
 //IndexRoute
 module.exports.index = async (req, res) => {
-  const allListing = await Listing.find({});
-  res.render("listings/index.ejs", { allListing });
+  const { category } = req.query;
+
+  let allListing;
+
+  if (category) {
+    allListing = await Listing.find({ category });
+  } else {
+    allListing = await Listing.find({});
+  }
+
+  res.render("listings/index.ejs", { allListing, category });
 };
 
 //New Route
@@ -45,7 +54,7 @@ module.exports.createListing = async (req, res, next) => {
   );
 
   const data = await response.json();
-
+  // console.log(data);
   const lat = Number(data[0].lat);
   const lng = Number(data[0].lon);
 

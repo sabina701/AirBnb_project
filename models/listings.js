@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Review = require("./review.js");
 const User = require("./users.js");
-const { number } = require("joi");
+const { number, string } = require("joi");
 let listingSchema = new Schema({
   title: {
     type: String,
@@ -50,6 +50,23 @@ let listingSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
+  },
+  category: {
+    type: String,
+    enum: [
+      "Trending",
+      "Rooms",
+      "Iconic City",
+      "Mountain",
+      "Castles",
+      "Amazing Pools",
+      "Camping",
+      "Farms",
+      "Arctic",
+      "Domes",
+      "Boat",
+    ],
+    required: true,
   },
 });
 
