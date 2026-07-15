@@ -32,16 +32,17 @@
       crossorigin=""
     />
     <!-- leaflet css ended-->
-    <link href="/css/rating.css" rel="stylesheet" />
-  </head>
-  <body>
-    <%- include("../includes/navbar.ejs") %>
     <!-- Load Leaflet BEFORE page scripts -->
     <script
       src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
       crossorigin=""
     ></script>
+    <link href="/css/rating.css" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include("../includes/navbar.ejs") %>
+
     <div class="container">
       <%- include("../includes/flash.ejs") %> <%- body %>
     </div>
