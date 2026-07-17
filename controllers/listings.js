@@ -1,13 +1,37 @@
 const Listing = require("../models/listings");
 //IndexRoute
 module.exports.index = async (req, res) => {
-  const { category } = req.query;
+  const { category, search } = req.query;
 
   let allListing;
 
+  // Category Filter
   if (category) {
     allListing = await Listing.find({ category });
-  } else {
+  }
+
+  // Search Filter
+  else if (search) {
+    allListing = await Listing.find({
+      $or: [
+        {
+          location: {
+            $regex: search,
+            $options: "i",
+          },
+        },
+        {
+          country: {
+            $regex: search,
+            $options: "i",
+          },
+        },
+      ],
+    });
+  }
+
+  // Show all listings
+  else {
     allListing = await Listing.find({});
   }
 
