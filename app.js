@@ -7,8 +7,8 @@ const app = express();
 const port = 8080;
 const mongoose = require("mongoose");
 const session = require("express-session");
-const { MongoStore } = require("connect-mongo");
-console.log(MongoStore);
+// const { MongoStore } = require("connect-mongo");
+// console.log(MongoStore);
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -32,21 +32,28 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
-const dbUrl = process.env.ATLASDB_URL;
-const store = MongoStore.create({
-  mongoUrl: dbUrl,
-  crypto: {
-    secret: "mysupersecretcode",
-  },
-  touchAfter: 24 * 3600,
-});
+const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+main()
+  .then(() => console.log(`connection successful`))
+  .catch((err) => console.log(err));
 
-store.on("error", (err) => {
-  console.log("error in mongodb session stored", err);
-});
+async function main() {
+  await mongoose.connect(MONGO_URL);
+}
+// const store = MongoStore.create({
+//   mongoUrl: dbUrl,
+//   crypto: {
+//     secret: "mysupersecretcode",
+//   },
+//   touchAfter: 24 * 3600,
+// });
+
+// store.on("error", (err) => {
+//   console.log("error in mongodb session stored", err);
+// });
 
 const sessionOptions = {
-  store,
+  // store,
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,
@@ -71,6 +78,7 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+
   next();
 });
 
@@ -86,14 +94,6 @@ app.use((err, req, res, next) => {
   res.status(status).render("listings/Error.ejs", { err });
   // res.status(status).send(message);
 });
-
-main()
-  .then(() => console.log(`connection successful`))
-  .catch((err) => console.log(err));
-
-async function main() {
-  await mongoose.connect(dbUrl);
-}
 
 app.listen(port, () => {
   console.log(`server is listening to port:${port}`);

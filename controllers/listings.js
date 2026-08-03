@@ -116,13 +116,24 @@ module.exports.renderEditForm = async (req, res) => {
   res.render("listings/edit.ejs", { listing });
 };
 
-//Update Route
 module.exports.updateListing = async (req, res) => {
   if (!req.body.listing) {
     throw new ExpressError(400, "send valid data for listing");
   }
+
   let { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  if (req.file) {
+    listing.image = {
+      url: req.file.path,
+      filename: req.file.filename,
+    };
+
+    await listing.save();
+  }
+
   req.flash("success", "Listing Updated");
   res.redirect(`/listings/${id}`);
 };
