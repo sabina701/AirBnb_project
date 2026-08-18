@@ -4,8 +4,22 @@ A full-stack Airbnb-inspired web application where users can browse, list, and r
 
 **🔗 Live Demo:** [airbnb-project-56yu.onrender.com](https://airbnb-project-56yu.onrender.com/listings)
 
-<!-- 📸 Add a screenshot or GIF of your homepage/listing page here. This is the single highest-impact addition you can make.
-![App Screenshot](path/to/screenshot.png) -->
+## 📸 Screenshots
+
+### Homepage
+![Homepage](./screenshots/homepage.jpg)
+
+### Listing Detail Page
+![Listing Detail](./screenshots/specific_ratnagiri_hotel_photo.jpg)
+
+### Location Map
+![Location Map](./screenshots/location.jpg)
+
+### Create New Listing
+![Create Listing](./screenshots/create_new_listing_photo.jpg)
+
+### Reviews
+![Reviews](./screenshots/feedback.jpg)
 
 ---
 
