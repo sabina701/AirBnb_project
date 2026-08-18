@@ -40,7 +40,7 @@ A full-stack Airbnb-inspired web application where users can browse, list, and r
 
 ## 📂 Project Structure
 
-
+```
 ├── controllers/     # Route logic (listings, users, reviews)
 ├── init/            # Database seeding scripts
 ├── models/          # Mongoose schemas (Listing, User, Review)
@@ -52,7 +52,7 @@ A full-stack Airbnb-inspired web application where users can browse, list, and r
 ├── cloudConfig.js   # Cloudinary configuration
 ├── middleware.js     # Auth and validation middleware
 └── schema.js         # Joi validation schemas
-
+```
 ---
 
 ## 🎯 What I Learned / Built
