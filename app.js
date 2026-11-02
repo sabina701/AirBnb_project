@@ -53,7 +53,6 @@ async function main() {
 // });
 
 const sessionOptions = {
-  // store,
   secret: "mysupersecretcode",
   resave: false,
   saveUninitialized: true,

@@ -2,23 +2,28 @@
 
 A full-stack Airbnb-inspired web application where users can browse, list, and review property stays. Built with Node.js, Express, and MongoDB, with cloud image hosting, secure authentication, and interactive maps.
 
-**🔗 Live Demo:** [airbnb-project-56yu.onrender.com](https://airbnb-project-56yu.onrender.com/listings)
+**🔗 Live Demo:** [airbnb-project-56yu.onrender.com](https://airbnb-project-56yu.onrender.com/listings)(please open on the edge browser because it doesn't work on chrome due to safety restrictions)
 
 ## 📸 Screenshots
 
 ### Homepage
+
 ![Homepage](./screenshots/homepage.jpg)
 
 ### Listing Detail Page
+
 ![Listing Detail](./screenshots/specific_ratnagiri_hotel_photo.jpg)
 
 ### Location Map
+
 ![Location Map](./screenshots/location.jpg)
 
 ### Create New Listing
+
 ![Create Listing](./screenshots/create_new_listing_photo.jpg)
 
 ### Reviews
+
 ![Reviews](./screenshots/feedback.jpg)
 
 ---
@@ -34,7 +39,6 @@ A full-stack Airbnb-inspired web application where users can browse, list, and r
 - ⭐ **Reviews and ratings** — users can leave star ratings and written reviews on listings
 - ✅ **Server-side validation** — request data validated with Joi before hitting the database
 - 💬 **Flash messages** — clear success/error feedback after user actions
-
 
 ---
 
@@ -67,10 +71,10 @@ A full-stack Airbnb-inspired web application where users can browse, list, and r
 ├── middleware.js     # Auth and validation middleware
 └── schema.js         # Joi validation schemas
 ```
+
 ---
 
 ## 🎯 What I Learned / Built
-
 
 - Designed a RESTful backend with full CRUD operations across multiple related MongoDB collections
 - Implemented secure, session-based authentication and authorization with Passport.js
@@ -94,7 +98,3 @@ A full-stack Airbnb-inspired web application where users can browse, list, and r
 **Sabina**
 
 [LinkedIn](https://www.linkedin.com/in/sabina-shrestha-31865b313/) · [Portfolio](#) · [Email](mailto:shresthasabeena9@gmail.com)
-
-
-
-
