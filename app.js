@@ -81,7 +81,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/listings", listings);
+app.use("/", listings);
 app.use("/listings/:id/reviews", reviews);
 app.use("/", user);
 app.use((req, res, next) => {
